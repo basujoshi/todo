@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f4f1ea">
+  <title>Daymark | Todo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="." aria-label="Daymark home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>daymark</span>
+      </a>
+      <div class="date-stamp" id="dateStamp"></div>
+    </header>
+
+    <section class="hero" aria-labelledby="pageTitle">
+      <div class="hero-copy">
+        <p class="eyebrow">A little order for your day</p>
+        <h1 id="pageTitle">Make room<br><em>for what matters.</em></h1>
+        <p class="hero-note">Capture the small things. Keep your attention for the big ones.</p>
+      </div>
+      <div class="progress-orbit" aria-label="Daily progress">
+        <svg viewBox="0 0 120 120" role="img" aria-hidden="true">
+          <circle class="orbit-track" cx="60" cy="60" r="50"></circle>
+          <circle class="orbit-progress" id="progressRing" cx="60" cy="60" r="50"></circle>
+        </svg>
+        <div class="progress-label"><strong id="progressValue">0%</strong><span>complete</span></div>
+      </div>
+    </section>
+
+    <section class="workspace" aria-label="Todo workspace">
+      <form class="task-form" id="taskForm">
+        <label class="sr-only" for="taskInput">Add a task</label>
+        <input id="taskInput" type="text" maxlength="120" placeholder="What needs your attention?" autocomplete="off" required>
+        <button class="add-button" type="submit" aria-label="Add task">Add task <span aria-hidden="true">+</span></button>
+      </form>
+
+      <div class="toolbar">
+        <div class="filter-tabs" role="tablist" aria-label="Filter tasks">
+          <button class="filter-tab is-active" type="button" data-filter="all" role="tab" aria-selected="true">All <span id="allCount">0</span></button>
+          <button class="filter-tab" type="button" data-filter="active" role="tab" aria-selected="false">Open <span id="activeCount">0</span></button>
+          <button class="filter-tab" type="button" data-filter="completed" role="tab" aria-selected="false">Done <span id="completedCount">0</span></button>
+        </div>
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <span class="sr-only">Search tasks</span>
+          <input id="searchInput" type="search" placeholder="Find a task" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="task-list" id="taskList" aria-live="polite"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <div class="empty-icon" aria-hidden="true">✦</div>
+        <h2 id="emptyTitle">Nothing here yet.</h2>
+        <p id="emptyMessage">Add a task above and give your day a first mark.</p>
+      </div>
+
+      <footer class="list-footer">
+        <span><strong id="remainingCount">0</strong> items remaining</span>
+        <button id="clearCompleted" type="button">Clear completed</button>
+      </footer>
+    </section>
+
+    <p class="privacy-note"><span aria-hidden="true">◌</span> Your list stays in this browser</p>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
